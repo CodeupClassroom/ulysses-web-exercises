@@ -5,7 +5,7 @@
     <title>Register With Us</title>
 </head>
 <body>
-<form action="https://requestb.in/s7zei8s7">
+<form action="https://requestb.in/s7zei8s7" method="post">
     <div>
         <label for="email">Email</label>
         <input type="text" id="email" name="email" placeholder="email@example.com">
@@ -24,12 +24,13 @@
     <div>
         <label>
             How did you hear about us?
-            <input name="about-us" value="billboard" type="radio"> Billboard
-            <input name="about-us" value="radio-advertisement" type="radio"> Radio Advertisement
-            <input name="about-us" value="internet-advertisement" type="radio"> Internet Advertisement
-            <input name="about-us" value="other" type="radio"> Other
+            <input name="about-us" value="billboard" type="checkbox"> Billboard
+            <input name="about-us" value="radio-advertisement" type="checkbox"> Radio Advertisement
+            <input name="about-us" value="internet-advertisement" type="checkbox"> Internet Advertisement
         </label>
     </div>
+
+    <button>Submit</button>
 </form>
 </body>
 </html>
