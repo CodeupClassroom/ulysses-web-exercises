@@ -1,9 +1,54 @@
 @import url('https://fonts.googleapis.com/css?family=Coiny');
 
-.fancy-header {
+/*
+ * 3 types of selectors
+ * 1. element (tag name) least important
+ * 2. class (start with a .) more important than elements
+ * 3. id (most important ones) they start with a #
+ */
+
+.fancy-header { /* multiple selector */
+    color: purple;
+}
+
+.extra-large {
+    font-size: 200px;
+}
+
+section {
+    background-color:  beige;
+}
+
+h2,
+.fancy-header { /* multiple selector */
     color: purple;
     text-decoration: underline;
+    background-color: brown;
 }
+
+#main-title {
+    background-color: aqua;
+}
+
+#container h1 {
+    color: blue;
+}
+
+#container>h1 { /* direct child */
+    color: blue;
+}
+
+h1.fancy-header { /* combining selectors */
+    color: blue;
+}
+
+
+/*
+#container
+  div -> .fancyheader
+     h1 -> #main .fancy-header
+  h1
+*/
 
 body {
     background-color: cornflowerblue;
