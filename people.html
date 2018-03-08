@@ -3,37 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Github People</title>
+    <link rel="stylesheet" href="css/github.css">
 </head>
 <body>
 <header>
     <img src="http://lorempixel.com/25/25" alt="Logo">
     <nav>
-        <ul>
-            <li><a href="#">Pull Requests</a></li>
-            <li><a href="#">Issues</a></li>
-            <li><a href="#">Marketplace</a></li>
-            <li><a href="#">Explore</a></li>
+        <ul class="nav-links">
+            <li class="nav-item"><a class="top-nav-link" href="#">Pull Requests</a></li>
+            <li class="nav-item"><a class="top-nav-link" href="#">Issues</a></li>
+            <li class="nav-item"><a class="top-nav-link" href="#">Marketplace</a></li>
+            <li class="nav-item"><a class="top-nav-link" href="#">Explore</a></li>
         </ul>
     </nav>
 </header>
 <main>
-    <h1>
-        <a href="#">
-            <img src="http://lorempixel.com/25/25" alt="Codeup classroom logo">
-            CodeupClassroom
-        </a>
-    </h1>
-    <nav>
-        <ul>
-            <li><a href="#">Repositories <span>37</span></a></li>
-            <li><a href="#">People <span>4</span></a></li>
-            <li><a href="#">Teams <span>4</span></a></li>
-            <li><a href="#">Projects <span>4</span></a></li>
-        </ul>
-    </nav>
+    <!--cmd + opt + t, followed by t again-->
+    <!--for comments cmd + /-->
+    <section>
+        <h1>
+            <a href="#" class="main-nav-link">
+                <img src="http://lorempixel.com/25/25" alt="Codeup classroom logo">
+                CodeupClassroom
+            </a>
+        </h1>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item"><a class="tab-link" href="#">Repositories <span>37</span></a></li>
+                <li class="nav-item"><a class="tab-link" href="#">People <span>4</span></a></li>
+                <li class="nav-item"><a class="tab-link" href="#">Teams <span>4</span></a></li>
+                <li class="nav-item"><a class="tab-link" href="#">Projects <span>4</span></a></li>
+            </ul>
+        </nav>
+    </section>
 
     <table>
-        <tr>
+        <tr class="title-row">
             <th colspan="6">Select All</th>
         </tr>
         <tr>

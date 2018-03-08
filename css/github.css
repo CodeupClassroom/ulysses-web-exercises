@@ -1,0 +1,49 @@
+header {
+    background-color: #000;
+    color: #fff;
+}
+
+.top-nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 10px 10px 10px 10px; /*top righ bottom left*/ /*specific section cmd + opt + /*/
+    padding: 20px 10px; /*top-bottom left-right*/
+    padding: 20px; /* top-bottom-left-right*/
+    margin: 30px;
+    border: solid 30px grey;
+}
+
+.nav-item {
+    display: inline-block;
+}
+
+.main-nav {
+    /* cmd + v */
+    color: #FAFBFC;
+}
+
+.main-nav-link {
+    color: #000;
+    text-decoration: none;
+}
+
+.tab-link {
+    color: #444;
+    text-decoration: none;
+}
+
+table {
+    border: solid 1px #aaa;
+}
+
+.title-row {
+    background-color: #F6F8FA;
+}
+
+
+
