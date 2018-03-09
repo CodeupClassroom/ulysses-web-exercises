@@ -21,3 +21,18 @@ main {
     float: left;
     width: 80%;
 }
+
+@media screen and (min-width:992px) {
+    aside, main {
+        width: 50%;
+    }
+    .google {
+        display: none;
+    }
+}
+
+@media screen and (min-width:1200px) {
+     aside, main {
+         width: 100%;
+     }
+}
