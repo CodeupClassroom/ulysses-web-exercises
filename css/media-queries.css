@@ -1,0 +1,125 @@
+/*!* Reset styles *!*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 15px;
+}
+
+h1 {
+    text-align: center;
+}
+
+/*!* Blocks *!*/
+.alert-info {
+    background-color: #add8e6;
+    border: 2px solid #d3d3d3;
+    padding: 1em;
+    text-align: center;
+}
+
+.alert-info > a {
+    color: #000;
+    text-decoration: none;
+}
+
+.nav-links {
+    padding-left: 0;
+}
+
+.nav-links li {
+    background-color: #d3d3d3;
+    padding: 1em;
+    text-align: center;
+    margin-bottom: .5em;
+    list-style-type: none;
+}
+
+.header-img img {
+    width: 100%;
+}
+
+.sub-section {
+    font-style: italic;
+}
+
+/* Footer and Social Links area */
+footer > p {
+    float: left;
+}
+
+footer {
+    padding-top: 100px;
+}
+
+#social-media-links {
+    float: right;
+}
+
+#social-media-links li {
+    list-style: none;
+    float: left;
+    letter-spacing: 1em;
+}
+
+.icons {
+    width: 25px;
+    height: 25px;
+}
+
+/*!* Applies when the screen is wider than 768px *!*/
+/*!* Put CSS that applies to non-mobile sized screen here *!*/
+@media screen and (min-width: 768px) {
+
+    .icons {
+        width: 40px;
+        height: 40px;
+        padding: 0 5px;
+    }
+
+    .hidden-on-desktop {
+        display: none;
+    }
+
+    h1 {
+        text-align: left;
+        padding: .2em;
+        float: left;
+        margin-bottom: 1em;
+    }
+
+    /*!* pull navbar list items to right *!*/
+    /*!* remove navbar list item background color *!*/
+    .nav-links {
+        text-align: right;
+        float: right;
+    }
+
+    .nav-links li {
+        background-color: transparent;
+        display: inline-block;
+        padding: .2em;
+        line-height: 4em;
+    }
+
+    section {
+        float: left;
+    }
+
+    /* main section to take up 2/3rds of page*/
+    .main {
+        width: 66%;
+    }
+
+    /* subsection to take up 1/3rd of page */
+    .sub-section {
+        width: 33%;
+    }
+
+    footer {
+        clear: both;
+        padding-top: 30px;
+    }
+}
