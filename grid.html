@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid examples</title>
+    <style>
+        /*width = width + padding + border*/
+        .container {
+            overflow: auto;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .row { /* clearfix */
+            overflow: auto;
+        }
+
+        .column {
+            float: left;
+            box-sizing: border-box; /*this won't add the padding and the border to the width of the element*/
+        }
+
+        .col-1-third {
+            width: 33.33333%;
+            background-color: #77AF00;
+            border: 10px solid red;
+        }
+
+        .col-2-thirds {
+            width: 66.6667%;
+            background-color: #1969B2;
+        }
+
+        .col-1-half {
+            width: 50%;
+            background-color: #FF9800;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .col-1-third,
+            .col-2-thirds,
+            .col-1-half {
+                width: 50%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .col-1-third,
+            .col-2-thirds,
+            .col-1-half {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <aside class="column col-1-third">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet aspernatur at, autem
+        consequatur cumque dolor, dolorum facilis incidunt iste iusto molestiae, officiis quaerat
+        quidem
+        repellendus sed ullam voluptatem voluptatibus.
+    </aside>
+    <main class="column col-2-thirds">
+        <div class="row">
+            <section class="column col-1-half">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam iusto quasi quisquam
+                recusandae sequi. Alias atque impedit magnam ut. Blanditiis consequuntur corporis
+                dolore
+                ducimus earum enim et eum fuga maiores non nostrum nulla porro quis ratione sequi
+                suscipit
+                tempora, tenetur, voluptatem! Consectetur doloribus dolorum explicabo maiores
+                perferendis
+                provident quibusdam voluptas.
+            </section>
+            <section class="column col-1-half">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab eum fugit ipsa iusto
+                libero
+                officiis possimus quis rem sapiente soluta? Aliquam at cum nesciunt tempore.
+            </section>
+        </div>
+        <div class="row">
+            <section class="column col-1-third">
+                <strong>Section 1</strong>.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab assumenda blanditiis
+                distinctio est, illo in, iste iure nesciunt nostrum odio sit, totam voluptates? Ab
+                culpa
+                cum eum excepturi ipsa, nesciunt.
+            </section>
+            <section class="column col-1-third">
+                <strong>Section 2</strong>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab assumenda blanditiis
+                distinctio est, illo in, iste iure nesciunt nostrum odio sit, totam voluptates? Ab
+                culpa
+                cum eum excepturi ipsa, nesciunt.
+            </section>
+            <section class="column col-1-third">
+                <strong>section 3</strong>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab assumenda blanditiis
+                distinctio est, illo in, iste iure nesciunt nostrum odio sit, totam voluptates? Ab
+                culpa
+                cum eum excepturi ipsa, nesciunt.
+            </section>
+        </div>
+    </main>
+</div>
+<footer>
+    <p class="column col-1-half">
+        <a href="#">Previous lesson</a>
+    </p>
+    <p class="column col-1-half">
+        <a href="#">Next lesson</a>
+    </p>
+</footer>
+</body>
+</html>
