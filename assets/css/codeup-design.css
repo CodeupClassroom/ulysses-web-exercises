@@ -1,0 +1,25 @@
+body {
+    background-color: #F0F0F0;
+    font-family: 'Abel', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Anton', sans-serif;
+}
+
+.main-nav {
+    list-style-type: none;
+}
+
+.logo {
+    max-width: 105px;
+}
+
+.brand {
+    font-size: xx-large;
+    text-transform: lowercase;
+}
+
+.pages {
+    text-transform: uppercase;
+}
