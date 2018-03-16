@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox positioning</title>
+    <style>
+        * {
+            border: 1px solid red;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul, ol { list-style-type: none}
+
+        /*flexbox*/
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .flex-item {
+            /*flex: 0 0 auto;*/ /*flex-grow flex-shrink flex-basis*/
+            flex-grow: 1;
+            flex-basis: 300px;
+        }
+        .flex-1 {
+            order: 1;
+            flex-basis: 100%;
+        }
+        .flex-2 {
+            order: 2;
+            flex-shrink: 2;
+        }
+        .flex-3 {
+            order: 3;
+            flex-grow: 3;
+        }
+        .flex-4 {
+            order: 4;
+        }
+        .flex-5 {
+            order: 5;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul class="flex-container">
+        <li class="flex-item flex-1">One</li>
+        <li class="flex-item flex-2">Two</li>
+        <li class="flex-item flex-5">Three</li>
+        <li class="flex-item flex-3">Four</li>
+        <li class="flex-item flex-4">Five</li>
+        <li class="flex-item">Six</li>
+    </ul>
+</nav>
+</body>
+</html>
