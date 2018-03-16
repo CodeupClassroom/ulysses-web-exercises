@@ -57,7 +57,13 @@
     - responsive. We use media queries
 
 
+## CSS Frameworks
 
+* Separation of container and content
+* `.component .modifier` (container)
+        `.component-header .modifier-2`
+        `.component-body`
+        `.component-footer`
 
 
 
