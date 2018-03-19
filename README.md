@@ -66,4 +66,36 @@
         `.component-footer`
 
 
+## Getting Help on the Command Line
 
+- git specifically
+
+    ```
+    git help <subcommand>
+    ```
+
+- broadly speaking
+
+    ```
+    <command> --help
+    ```
+
+    ```
+    man <command>
+    ```
+
+- help I'm stuck in the manual page!
+
+    - d: down
+    - u: up
+    - e: down (just a little)
+    - y: up (just a little)
+    - q: quit
+
+- rename a branch
+
+    ```
+    git branch -m oldname newname
+    ```
+
+   
