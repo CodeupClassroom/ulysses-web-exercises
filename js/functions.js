@@ -1,5 +1,35 @@
 'use strict';
 
+// This morning
+// - how to write a function
+// - more function drills
+// This week:
+// - finish functions
+// - conditionals
+// - loops
+// - arrays + objects
+// Next week: JS Assessment on the topics above
+// - first grading period
+
+// Write a function named decrement that accepts a number
+// and returns the number minus 1
+
+// accepts a number, (takes in, is passed)
+function decrement(someNumber) {
+  return someNumber - 1;
+}
+
+// defining a function does _not_ run the code in the function
+
+// check our work, console.log the return value
+var theThingThatTheFunctionReturns = decrement(12);
+console.log(theThingThatTheFunctionReturns);
+
+// common mistakes:
+// - relying on global variables instead of parameters/arguments
+// - not returning values
+// - console.log inside a function (this is helpful for debugging, but shouldn't be in the finsihed function)
+
 parseInt("123abc");
 // we are calling the parseInt function
 // and passing an *argument* of "123abc"
