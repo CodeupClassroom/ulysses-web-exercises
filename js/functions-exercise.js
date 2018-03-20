@@ -57,7 +57,7 @@ var random = Math.floor((Math.random() * 3) + 1);
  */
 
 function isTwo(n) {
-	return n === 2;
+  return n === 2;
 }
 
 console.log('random: ' + random);
@@ -76,8 +76,8 @@ console.log('isTwo(random): ' + isTwo(random));
  */
 
 function calculateTip(percentage, total) {
-	var tipAmount = percentage * total;
-	return tipAmount;
+  var tipAmount = percentage * total;
+  return tipAmount;
 }
 
 console.log('calculateTip(0.20, 20): ' + calculateTip(0.20, 20));
@@ -93,13 +93,13 @@ console.log('calculateTip(0.15, 33.42): ' + calculateTip(0.15, 33.42));
 
 // helper function to prompt and get a number back
 function promptNumber(question) {
-	var userInput = prompt(question);
-	return parseFloat(userInput);
+  var userInput = prompt(question);
+  return parseFloat(userInput);
 }
 
 var amountToTip = calculateTip(
-	promptNumber('Tip percentage?'),
-	promptNumber('Bill total?')
+  promptNumber('Tip percentage?'),
+  promptNumber('Bill total?')
 );
 
 alert('You should tip $' + amountToTip);
@@ -120,9 +120,9 @@ alert('You should tip $' + amountToTip);
  */
 
 function applyDiscount(originalPrice, discountPercent) {
-	var discountAmount = originalPrice * discountPercent;
-	var priceAfterDiscount = originalPrice - discountAmount;
-	return priceAfterDiscount;
+  var discountAmount = originalPrice * discountPercent;
+  var priceAfterDiscount = originalPrice - discountAmount;
+  return priceAfterDiscount;
 }
 
 /**
@@ -131,30 +131,30 @@ function applyDiscount(originalPrice, discountPercent) {
 
 // do you understand the vocab?
 function identity(arg) {
-	return arg;
+  return arg;
 }
 
 function isValidLogin(username, password) {
-	// Strictly speaking, we don't need to have separate variables for all of
-	// these but it makes the code easier to read and reason about
-	var isPasswordLongEnough = password.length > 5;
-	var isUsernameShortEnough = username.length < 20;
-	var passwordIncludesUsername = password.indexOf(username) !== -1;
-	var usernameHasWhitespace = username !== username.trim();
-	var passwordHasWhitespace = password !== password.trim();
+  // Strictly speaking, we don't need to have separate variables for all of
+  // these but it makes the code easier to read and reason about
+  var isPasswordLongEnough = password.length > 5;
+  var isUsernameShortEnough = username.length < 20;
+  var passwordIncludesUsername = password.indexOf(username) !== -1;
+  var usernameHasWhitespace = username !== username.trim();
+  var passwordHasWhitespace = password !== password.trim();
 
-	return (
-		isPasswordLongEnough &&
-		isUsernameShortEnough &&
-		! passwordIncludesUsername &&
-		! usernameHasWhitespace &&
-		! passwordHasWhitespace
-	);
+  return (
+    isPasswordLongEnough &&
+    isUsernameShortEnough &&
+    ! passwordIncludesUsername &&
+    ! usernameHasWhitespace &&
+    ! passwordHasWhitespace
+  );
 }
 
 // see also .includes
 function stringContains(haystack, needle) {
-	return haystack.indexOf(needle) !== -1;
+  return haystack.indexOf(needle) !== -1;
 }
 
 function hasWhitespace(string) {
@@ -162,11 +162,11 @@ function hasWhitespace(string) {
 }
 
 function square(n) {
-	return n * n;
+  return n * n;
 }
 
 // composition: using functions together
 // - not possible if we console.log instead of returning
 function isRightTriangle(a, b, c) {
-	return square(a) + square(b) === square(c);
+  return square(a) + square(b) === square(c);
 }
