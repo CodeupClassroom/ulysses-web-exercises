@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Functions Review</h1>
+Functions are procedure.
+Function definitions are a handful of lines of code that do something,
+    that we generally give a name.
+When we have a named function, we "call" that function to run/execute
+
+building block
+solve problems
+takes inputs produces outputs
+reusable block of code -> with a name
+subroutine that we can use over and over
+processes data
+
+Tips:
+name your functions after verbs or verb phrases
+
+Make sure you have your procedure code down, then wrap it in a function
+
+<br>
+Caution:
+Unless you return something from a function in JS, it returns "undefined"
+
+<script>
+    "use strict";
+
+    function isEven(number) {
+        return number % 2 == 0;
+    }
+
+    function getNumber() {
+        return parseFloat(prompt("Please input a number."));
+    }
+
+    function isNumeric(value) {
+        return !isNaN(parseFloat(value));
+    }
+
+    // conditionals are statements in JS that allow us to make the code execute
+    // based on the value(s) of things
+
+    function passwordIsValid(username, password) {
+        var passwordIsLongEnough = password.length >= 6;
+        var passwordContainsUsername = password.includes(username);
+        return (passwordIsLongEnough && !passwordContainsUsername);
+    }
+
+    if(passwordIsValid("MargretHamilton", "look to la luna")) {
+        console.log("Welcome aboard!");
+    } else {
+        console.log("Try logging in again.");
+    }
+
+    if(isEven(4)) {
+        console.log("Even numbers win the lotto");
+    } else {
+        console.log("Buy another ticket, yo!");
+    }
+
+    function isNegative(number) {
+        return number < 0;
+    }
+
+    function isPositive(number) {
+        return number > 0;
+    }
+
+    var number = getNumber();
+    if(isPositive(number)) {
+        console.log("You entered a positive number");
+    } else if(isNegative(number)) {
+        console.log("You entered a negative number");
+    } else {
+        console.log("Either you entered zero or something that aint a number.");
+    }
+
+    // ternary operator => returns an expression
+    // condition ? then : else;
+    var message = isEven(number) ? "Your number is even" : "Number is odd.";
+
+    if(isEven(number)) {
+        message = "Your number is even";
+    } else {
+        message = "Number is odd.";
+    }
+
+
+
+
+
+
+
+    var pizzaPreference = prompt("What kind of pizza do you like?");
+
+    // switch does a === comparison between the value in the paryns and each case
+    switch(pizzaPreference) {
+        case "olives":
+            alert("Olives rock!");
+            break;
+        case "pineapple and hot sauce":
+            alert("What a coincidence, that's my favorite!");
+            break;
+        case "cheese":
+            alert("Just plain cheese? Okay...");
+            break;
+        default:
+            alert(pizzaPreference + " isn't my favorite, but let's order some!");
+            break;
+    }
+
+
+</script>
+</body>
+</html>
