@@ -15,6 +15,32 @@
  *
  * Can you refactor your code to use functions?
  */
+// 1. ask the user if they want to enter a number
+var answer = confirm('Do you want to enter a number');
+// 2. If the answer is Cancel go to step 7
+if (answer) {
+    // 3. Ask the user for the number
+    var number = parseInt(prompt('Enter a number'));
+    // 3.1. If the user input is not a number show an error message and go to 7
+    if (!isNaN(number)) {
+        // 4. Show a message telling if the number is even or odd
+        if (number % 2 === 0) {  // consequence
+            alert(number + " is even");
+        } else {  // alternative
+            alert(number + " is odd");
+        }
+        // 5. Sum 100 to the number and show the result
+        alert(number + " + 100 = " + (number + 100));
+        // 6. Show a message saying if the number is positive or negative
+        if (number >= 0) { // consequence
+            alert(number + " is a positive number :)");
+        } else {
+            alert(number + " is a negative number :(");
+        }
+    }
+}
+// 7. End of program
+
 
 /* ########################################################################## */
 
