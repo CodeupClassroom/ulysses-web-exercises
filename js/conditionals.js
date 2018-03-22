@@ -150,16 +150,20 @@ function exerciseTwo() {
     console.log(analyzeColor(randomColor));
     alert(analyzeColor(randomColor));
     document.write(analyzeColor(randomColor));
+    /**
+     * TODO:
+     * Prompt the user for a color when the page loads, and pass the input from the
+     * user to your `analyzeColor` function. Alert the return value from your
+     * function to show it to the user.
+     */
+    var color = inputNumber('Enter a number between 0 and 6');
+    var message = analyzeColor(colors[color]);
+    alert(message);
 }
 
-// exerciseTwo();
+exerciseTwo();
 
-/**
- * TODO:
- * Prompt the user for a color when the page loads, and pass the input from the
- * user to your `analyzeColor` function. Alert the return value from your
- * function to show it to the user.
- */
+
 
 /* ########################################################################## */
 
