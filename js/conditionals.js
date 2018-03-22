@@ -93,7 +93,7 @@ function exerciseOne() {
  * console.logging the function's return value
  */
 function analyzeColor(color) {
-    if (color === 'blue') {
+    /*if (color === 'blue') {
         return 'blue is the color of the sky';
     } else if (color === 'red') {
         return 'Strawberries are red';
@@ -109,6 +109,28 @@ function analyzeColor(color) {
         return 'you\'re turning violet Violet';
     } else {
         return "I don't know anything about " + color;
+    }*/
+    /**
+     * TODO:
+     * Refactor your above function to use a switch-case statement
+     */
+    switch (color) {
+        case 'blue':
+            return 'blue is the color of the sky';
+        case 'red':
+            return 'Strawberries are red';
+        case 'orange':
+            return 'Orange is orange';
+        case 'yellow':
+            return 'Bananas are yellow';
+        case 'green':
+            return 'bananas are not green';
+        case 'indigo':
+            return 'indigo is the color of ink';
+        case 'violet':
+            return 'you\'re turning violet Violet';
+        default:
+            return "I don't know anything about " + color;
     }
 }
 
@@ -124,14 +146,13 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Pass the `randomColor` variable to your function and console.log the results.
  * You should see a different message everytime you refresh the page
  */
-console.log(analyzeColor(randomColor));
-alert(analyzeColor(randomColor));
-document.write(analyzeColor(randomColor));
+function exerciseTwo() {
+    console.log(analyzeColor(randomColor));
+    alert(analyzeColor(randomColor));
+    document.write(analyzeColor(randomColor));
+}
 
-/**
- * TODO:
- * Refactor your above function to use a switch-case statement
- */
+// exerciseTwo();
 
 /**
  * TODO:
