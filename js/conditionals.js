@@ -92,6 +92,25 @@ function exerciseOne() {
  * Test your function by passing various string literals to it and
  * console.logging the function's return value
  */
+function analyzeColor(color) {
+    if (color === 'blue') {
+        return 'blue is the color of the sky';
+    } else if (color === 'red') {
+        return 'Strawberries are red';
+    } else if (color === 'orange') {
+        return 'Orange is orange';
+    } else if (color === 'yellow') {
+        return 'Bananas are yellow';
+    } else if (color === 'green') {
+        return 'bananas are not green';
+    } else if (color === 'indigo') {
+        return 'indigo is the color of ink';
+    } else if (color === 'violet') {
+        return 'you\'re turning violet Violet';
+    } else {
+        return "I don't know anything about " + color;
+    }
+}
 
 // Don't change the next two lines!
 // These lines create two variables for you:
@@ -105,6 +124,9 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Pass the `randomColor` variable to your function and console.log the results.
  * You should see a different message everytime you refresh the page
  */
+console.log(analyzeColor(randomColor));
+alert(analyzeColor(randomColor));
+document.write(analyzeColor(randomColor));
 
 /**
  * TODO:
