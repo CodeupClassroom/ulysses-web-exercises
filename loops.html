@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    "use strict";
+    function exampleOne() {
+        // 1. Ask the user for her name
+        var name = prompt('What\'s your name');
+        // 2. Ask the user how many times should we print her name
+        var times = prompt('How many times do you want me to print it?');
+
+        // 1. while
+        // 2. do while
+        // 3. for
+
+        // counters
+        var count = 0;
+
+        // 2. Print the name 3 times
+        while (count < times) { // condition to continue
+            console.log(name); // the thing to repeat
+            count++;  // Counter
+        }
+
+        while (times >= 1) { // condition to continue
+            console.log(name); // the thing to repeat
+            times--;
+        }
+    }
+    // exampleOne();
+
+    // 1. Ask the user for her name
+    var name = prompt('What\'s your name');
+    // 2. Ask the user she wants to print her name as many times as she wants
+    /*
+    var yesNo = confirm('Do you want me to print your name?');
+    while (yesNo) {
+        console.log(name);
+        yesNo = confirm('Do you want me to print your name?')
+    }
+    */
+    while (confirm('Do you want me to print your name?')) {
+        console.log(name);
+    }
+
+</script>
+</body>
+</html>
