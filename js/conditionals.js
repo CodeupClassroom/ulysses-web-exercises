@@ -141,6 +141,7 @@ function analyzeColor(color) {
 //                  will contain a different color everytime the page loads)
 var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 var randomColor = colors[Math.floor(Math.random() * colors.length)];
+
 /**
  * TODO:
  * Pass the `randomColor` variable to your function and console.log the results.
@@ -161,8 +162,7 @@ function exerciseTwo() {
     alert(message);
 }
 
-exerciseTwo();
-
+// exerciseTwo();
 
 
 /* ########################################################################## */
@@ -186,13 +186,42 @@ exerciseTwo();
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
+function calculateTotal(luckyNumber, originalAmount) {
+    switch (luckyNumber) {
+        case 0:
+            return originalAmount;
+        case 1:
+            return originalAmount - (originalAmount * .1);
+        case 2:
+            return originalAmount * .75;
+        case 3:
+            return originalAmount * .65;
+        case 4:
+            return originalAmount * .5;
+        case 5:
+            return 0;
+    }
+}
 
 /**
- * TODO:
  * Uncomment the line below to generate a random number between 0 and 6.
  * Prompt the user for their total bill, then use your `calculateTotal` function
  * and alerts to display to the user what their lucky number was, what their
  * price before the discount was, and what their price after the discount is.
  */
-// Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+function exerciseThree() {
+    // Generate a random number between 0 and 6
+    var luckyNumber = Math.floor(Math.random() * 6);
+    // 1. Show the user the lucky number
+    alert('Your lucky number is ' + luckyNumber);
+    // 2. Ask the user for the original price
+    var originalAmount = inputNumber('How much did you bought?');
+    // 3. Calculate total
+    var total = calculateTotal(luckyNumber, originalAmount);
+    // 3. Show original price
+    alert('Your total before the discount is ' + originalAmount);
+    // 4. Price after the discount
+    alert('Your total after discount is $' + total.toFixed(2));
+}
+
+exerciseThree();
