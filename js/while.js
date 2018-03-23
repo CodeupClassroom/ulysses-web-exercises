@@ -31,7 +31,7 @@ do {
     // thing(s) to repeat
     var conesSold = Math.floor(Math.random() * 5) + 1;
 
-    if (conesSold >= allCones) { // I have enough cones to sell
+    if (conesSold <= allCones) { // I have enough cones to sell
         console.log(conesSold + ' cones sold...');
         /* increment/decrement/accumulator */
         allCones -= conesSold;
@@ -41,6 +41,33 @@ do {
 
 } while (allCones > 0);
 console.log('Yay! I sold them all!');
+
+// for: when you know exactly how many time you'll repeat something
+// while or do while: when you don't know how many repetitions
+// use do while if you need to repeat something at least once
+// use while when you might not repeat even once
+
+for (allCones = Math.floor(Math.random() * 50) + 50; allCones > 0; ) {
+    conesSold = Math.floor(Math.random() * 5) + 1;
+
+    if (conesSold <= allCones) { // I have enough cones to sell
+        console.log(conesSold + ' cones sold...');
+        /* increment/decrement/accumulator */
+        allCones -= conesSold;
+    } else { // this is the special case
+        console.log('Cannot sell you ' + conesSold + ' cones I only have ' + allCones + '...');
+    }
+}
+console.log('Yay! I sold them all!');
+
+
+
+
+
+
+
+
+
 
 
 
