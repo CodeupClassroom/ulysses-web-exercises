@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array manipulation</title>
+</head>
+<body>
+<script>
+    var todoList = ['Take out the trash', 'Clean the car', 'Pay the bills'];
+    document.write(todoList.join('<br>'));
+    var task = prompt('Add a new task');
+    todoList.push(task); // It will add the task at the end of the list
+    document.write(todoList.join('<br>'));
+
+    var importantTask = prompt('What\'s your first task for the day');
+    todoList.unshift(importantTask);
+    document.write(todoList.join('<br>'));
+
+    var completedTask = prompt('What task has been completed?');
+    var taskIndex = todoList.indexOf(completedTask);
+    // delete todoList[taskIndex];
+
+    console.log(todoList.slice(0, taskIndex));
+    console.log(todoList.slice(taskIndex + 1));
+
+    var hello = 'Hello';
+    console.log(hello.substring(0, 3));
+    console.log(hello); // string are immutable
+
+
+    // arrays are mutable
+    todoList.shift(); // It will remove the first task
+    todoList.pop(); // It will remove the last task
+
+    todoList.reverse();
+    todoList.sort();
+
+    document.write(todoList.join('<br>'));
+
+    var moreTasks = 'Practice conditionals,Practice loops,Practice functions';
+    console.log(moreTasks.split(','));
+
+</script>
+</body>
+</html>
