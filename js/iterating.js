@@ -1,4 +1,4 @@
-(function(){
+(function () {
     "use strict";
 
     /**
@@ -60,5 +60,29 @@
      *  > second([1, 2, 3, 4, 5]) // returns 2
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
+    function first(numbers) {
+        return numbers[0];
+    }
+    function second(numbers) {
+        if (!Array.isArray(numbers)) {
+            console.error('This function expects an array');
+            return;
+        }
+        if (numbers.length > 1) {
+            return numbers[1];
+        }
+        console.error('This array does not have 2 elements');
+    }
+    function last(numbers) {
+        return numbers[numbers.length - 1];
+    }
+
+    var numbers = [190, 2, 3, 4, 5];
+    console.log(first(numbers));
+    console.log(second([1]));  //
+    console.log(second(numbers));
+    console.log(second(false));
+    console.log(last(numbers));
+
 
 })();
