@@ -35,7 +35,7 @@
     console.log(person.firstName);
     console.log(person.lastName);
 
-    /** TODO:
+    /**
      * HEB has an offer for the shoppers that buy products amounting to
      * more than $200. If a shopper spends more than $200, they get a 12%
      * discount. Write a JS program, using conditionals, that logs to the
@@ -49,11 +49,32 @@
      * and console.log the relevant messages for each person
      */
 
-    // var shoppers = [
-    //     {name: 'Cameron', amount: 180},
-    //     {name: 'Ryan', amount: 250},
-    //     {name: 'George', amount: 320}
-    // ];
+    var shoppers = [
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320}
+    ];
+
+    // var i;
+    // for (i = 0; i < shoppers.length; i++) {
+    shoppers.forEach(function (shopper) {
+        console.log(generateTotalMessage(shopper));
+    });
+
+    function generateTotalMessage(shopper) {
+        var total, discount;
+        total = shopper.amount;
+        discount = 0;
+        if (shopper.amount > 200) {
+            total = (shopper.amount * .88);
+            discount = shopper.amount * .12;
+        }
+
+        return shopper.name + " bought $" + shopper.amount.toFixed(2) +
+            ", the discount is $" +  discount.toFixed(2) +
+            " and the total is $" + total.toFixed(2)
+    }
+
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
