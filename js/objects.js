@@ -19,12 +19,12 @@
     var person= {};
     person["firstName"] = "Luis";
     person["lastName"] = "Montealegre";
-
-    console.log(person.firstName);
-    console.log(person.lastName);
-
+    person.sayHello = function (/*firstName*/) {
+        // var firstName; // local variable
+        return "Hello from " + this.firstName + " " + this.lastName + "!";
+    };
+    console.log(person.sayHello());
     /**
-     * TODO:
      * Add a sayHello method to the person object that returns a greeting using
      * the firstName and lastName properties.
      * console.log the returned message to check your work
@@ -32,6 +32,8 @@
      * Example
      * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
      */
+    console.log(person.firstName);
+    console.log(person.lastName);
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
