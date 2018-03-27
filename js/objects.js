@@ -122,6 +122,9 @@
         showBookInfo(books[i], i);
     }*/
 
+    books.push(createBook("Where the sidewalk ends", "Shel Silverstein"));
+    books[4] = createBook("Working effectively with legacy code", "Steve Freeman");
+
     books.forEach(showBookInfo);
     //books.forEach(function () {});
 
