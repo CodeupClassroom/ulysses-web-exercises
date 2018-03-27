@@ -75,8 +75,7 @@
             " and the total is $" + total.toFixed(2);
     }
 
-
-    /** TODO:
+    /**
      * Create an array of objects that represent books and store it in a
      * variable named `books`. Each object should have a title and an author
      * property. The author property should be an object with properties
@@ -88,9 +87,15 @@
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
+    var books = [
+        createBook("The Pragmatic Programmer", "Andy Hunt"),
+        createBook("Refactoring", "Martin Fowler"),
+        createBook("Clean Code", "Robert Martin"),
+        createBook("97 Things Every Programmer Should Know", "Kevlin Henney"),
+        createBook("Test-Driven Development by Example", "Kent Beck")
+    ];
 
     /**
-     * TODO:
      * Loop through the books array and output the following information about
      * each book:
      * - the book number (use the index of the book in the array)
@@ -113,6 +118,12 @@
      *      ---
      *      ...
      */
+    /*for (var i = 0; i < books.length; i++) {
+        showBookInfo(books[i], i);
+    }*/
+
+    books.forEach(showBookInfo);
+    //books.forEach(function () {});
 
     /**
      * Bonus:
@@ -124,5 +135,18 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+    function createBook(title, author) {
+        var name  = author.split(" ");
+        return {title: title, author: {
+            firstName: name[0],
+            lastName: name[1]
+        }}
+    }
 
+    function showBookInfo(book, index) {
+        console.log("Book # " + (index + 1));
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+        console.log('------');
+    }
 })();
