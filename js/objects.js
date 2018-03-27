@@ -62,17 +62,17 @@
     });
 
     function generateTotalMessage(shopper) {
-        var total, discount;
-        total = shopper.amount;
-        discount = 0;
+        var total = shopper.amount;
+        var discount = 0;
+
         if (shopper.amount > 200) {
-            total = (shopper.amount * .88);
             discount = shopper.amount * .12;
+            total = shopper.amount - discount;
         }
 
         return shopper.name + " bought $" + shopper.amount.toFixed(2) +
             ", the discount is $" +  discount.toFixed(2) +
-            " and the total is $" + total.toFixed(2)
+            " and the total is $" + total.toFixed(2);
     }
 
 
