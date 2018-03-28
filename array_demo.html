@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>['hip', 'hip', 'array!']</title>
+</head>
+<body>
+<h1>[Arrays, arrays, arrays]</h1>
+<script type="text/javascript">
+"use strict";
+
+var gameBoard = [
+    ["x", "x", 3],
+    [4, "o", 6],
+    [7, 8, 9]
+];
+
+console.log(gameBoard[0][0]);
+console.log(gameBoard[1][1]);
+console.log(gameBoard[0][1]);
+console.log(gameBoard[2]);
+
+var languages = ["JS", "Java", "MySQL", "HTML5", "CSS3", "python", "lisp", "ruby"];
+
+console.log("the number of items on the languages array is " + languages.length);
+
+// iterating across an array
+for(var i = 0; i < languages.length; i++) {
+    console.log(languages[i]);
+}
+
+languages.forEach(function(element, index, array) {
+    element === languages[index] === array[index];
+});
+
+var systems = ["Mac OSX", "Windows 10 Pro", "GNU/Linux", "Solaris", "OS2 Warp"];
+
+systems.forEach(function(system, index) {
+    if(index != 1) {
+        console.log(system);
+    }
+});
+
+
+
+
+
+</script>
+</body>
+</html>
