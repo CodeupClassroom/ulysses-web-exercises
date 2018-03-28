@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BOM Demo</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    
+// change the title of the page after 2 seconds
+// setTimeout(functionDefinition, delayInMilliseconds)
+
+setTimeout(function() {
+    window.document.title = "JS is the BOM!";
+}, 2000);
+
+// run a function every second
+var count = 3;
+
+var intervalId = setInterval(function() {
+    console.log(count);
+    count--;
+
+    if(count <= 0) {
+        clearInterval(intervalId);
+    }
+}, 1000);
+
+</script>
+</body>
+</html>
