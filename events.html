@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Events</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <button>Change "World" to "Everybody"</button>
+    <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JS</li>
+        <li>MySQL</li>
+        <li>Java</li>
+    </ul>
+
+    <br>
+    <h2>target.addEventListener(type, listener[, useCapture]);</h2>
+
+<script type="text/javascript">
+// The following line of code is in "documentation"-ese
+// target.addEventListener(type, listener[, useCapture]);
+// the target is the HTML element that we're attaching an event listener to...
+// .addEventListener is a method that takes in 2 or 3 arguments
+// the first argument into .addEventListener is the event type
+// This is a string that holds the event's name
+// "click" is our event, so that's the type
+// listener is what we call the event handler
+// the event handler is the function that the event calls.
+
+// Scenario:
+// Page loads "hello world"
+// When the user clicks the button
+// the h1 text changes to "Hi, Everybody!";
+var target = document.getElementsByTagName("button")[0];
+
+// target.addEventListener("eventType", functionWeRunWhenThatEventHappens);
+target.addEventListener("click", function() {
+    document.querySelector("h1").innerText = "Hi, Everybody!";
+});
+
+// when the event happens on the target, run the function specified in the eventListener
+document.body.addEventListener("keypress", function(event) {
+    document.body.innerHTML = event.key;
+});
+
+// notice the event parameter in the anonymous function. it holds the event information the browser knows
+// document.body.addEventListener("mousemove", function(event) {
+//     console.log(event);
+// });
+
+var listItems = document.getElementsByTagName("li");
+listItems = Array.from(listItems);
+
+listItems.forEach(function(item) {
+    item.addEventListener('click', function(event) {
+        console.log(event.target);
+    });
+});
+
+
+</script>
+</body>
+</html>

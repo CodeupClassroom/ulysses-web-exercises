@@ -1,11 +1,21 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>DOM: Query and Modify</title>
+    <style>
+        body {
+            transition: all 1.5s ease;
+        }
+    </style>
 </head>
 <body>
+
+<button>Change Header</button>
+<button>Change sub-header</button>
+<button>Color the list items</button>
+<button>Say "Mission Accomplished"</button>
+<button id="addNewButton">Add a new button to the page</button>
 
 <h1 id="main-header">Hello World!</h1>
 <ul>
@@ -17,6 +27,7 @@
 </ul>
 <h2 id="sub-header">Hello Again.</h2>
 <p class="sub-paragraph">
+
     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
     ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -26,40 +37,108 @@
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
+<button id="rainbow"><h1>Rainbow Time</h1></button>
+
 <script>
-    (function() {
         "use strict";
-        var mainHeader = document.getElementById('main-header');
-        mainHeader.innerHTML = "JavaScript is Cool!";
 
-        var subHeader = document.getElementById('sub-header');
-        subHeader.style.color = 'blue';
+        var buttons = document.getElementsByTagName('button');
 
-        var listItems = document.getElementsByTagName('li') ;
-        // listItems[0].innerText = 'Luis';
+        buttons[0].addEventListener('click', function() {
+            var mainHeader = document.getElementById('main-header');
+            if(mainHeader.innerHTML == "Hello World!") {
+                mainHeader.innerHTML = "JavaScript is Cool!";
+            } else if(mainHeader.innerHTML == "JavaScript is Cool!"){
+                mainHeader.innerHTML = "Hello World!";
+            }
+        });
 
-        /*for (var i = 0; i < listItems.length; i++) {
-            if (i % 2 === 0) {
+        buttons[1].addEventListener('click', function() {
+            var subHeader = document.getElementById('sub-header');
+            subHeader.style.color = 'blue';
+        });
+
+        buttons[2].addEventListener('click', function() {
+            var listItems = document.getElementsByTagName('li') ;
+
+            for (var i = 0; i < listItems.length; i += 2) {
                 listItems[i].style.color = 'gray';
             }
-        }*/
 
-        for (var i = 0; i < listItems.length; i += 2) {
-            listItems[i].style.color = 'gray';
-        }
-
-        for (i = 0; i < listItems.length; i++) {
-            var dbId = listItems[i].getAttribute('data-dbid');
-            if (dbId === '1') {
-                listItems[i].style.color = 'blue';
+            for (i = 0; i < listItems.length; i++) {
+                var dbId = listItems[i].getAttribute('data-dbid');
+                if (dbId === '1') {
+                    listItems[i].style.color = 'blue';
+                }
             }
-        }
+        });
+
+        buttons[3].addEventListener('click', function() {
+            // how to create a *real* array from an HTML collection (which is a kinda sorta array)
+            var subParagraphs = document.getElementsByClassName("sub-paragraph");
+
+            // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
+            subParagraphs[0].innerText = "Mission Accomplished";
+        });
+        
 
         // TODO: Uncomment the next line and get all elements with class name sub-paragraph
-        // var subParagraphs = ;
 
-        // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
-    })();
+        
+
+        // if you need to target an element on the page
+        // right click it in the browser
+        // inspect
+        // right click in the inspector -> copy -> copy selector
+        // this will give you the most efficient CSS selector for that specific element
+        // this selector can be directly used in your CSS style definitions
+        // If you want to JS it
+        // put that selector in a string.
+        // pass the string to:
+        // document.querySelector() gives you a single matching element
+        // document.querySelectorAll("li") gives you all matching elements
+        // document.querySelector("body > div > main > div > div.md-content > article > p:nth-child(17)")
+
+        document.getElementById("addNewButton").addEventListener('click', function() {
+            document.getElementById("addNewButton").style.display = "none";
+
+            document.body.innerHTML += "<button>Change the background color</button>";
+        });
+
+        // for(var i = 0; i <= 3; i++) {
+            
+        //     document.body.innerHTML += "<button id='button" + i + "'>Stuff #" + i + "</button>";
+            
+        // }
+
+        // function changes the background color on a timer to an array of 4 different colors
+        document.getElementById('rainbow').addEventListener('click', function() {
+            var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'magenta', 'pink', 'salmon'];
+
+            var counter = 0;
+
+            var intervalId = setInterval(function() {
+                if(counter < colors.length) {
+                    document.body.style['backgroundColor'] = colors[counter];
+                    counter++;    
+                } else {
+                    counter = 0;
+                }            
+            }, 1000);
+        });
+
+
+        // var contents = document.body.innerHTML;
+        // document.body.innerHTML = "";
+
+        // var index = 0;
+
+        // window.addEventListener('keypress', function() {
+        //     document.body.innerHTML += contents[index];
+        //     index++;
+        // });
+
+
 </script>
 </body>
 </html>
