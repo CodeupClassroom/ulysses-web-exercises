@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DOM Lesson</title>
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"
+    >
+</head>
+<body>
+<main class="container">
+    <nav class="mt-2">
+        <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link active" href="#">Repositories <span>37</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">People <span>4</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Teams <span>4</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Projects <span>4</span></a></li>
+        </ul>
+    </nav>
+
+    <form class="mt-3">
+        <div class="from-group">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" class="form-control">
+            <div class="alert alert-danger"></div>
+        </div>
+        <div class="from-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" class="form-control">
+        </div>
+        <div>
+            <input class="btn btn-primary" type="submit">
+        </div>
+    </form>
+</main>
+<script>
+    var navLinks = document.getElementsByClassName('nav-link'); // HTMLCollection
+    for (var i = 0; i < navLinks.length; i++) {
+        if (navLinks[i].innerText.substring(0, 6) === 'People') {
+            // console.log('yay!');
+            navLinks[i].innerText = navLinks[i].innerText.replace('People', 'Yay!');
+        }
+    }
+    document.getElementsByClassName('alert')[0].innerText = 'Error!';
+</script>
+</body>
+</html>
