@@ -2,7 +2,7 @@
 
 # Creating a git repository
 
-1. `git init`
+1. `git init` (is how you create a brand new repo in a folder. *only do this once*)
 1. Create a new repository on Github
 1. Add your remote server `git@github.com:CodeupClassroom/ulysses-web-exercises.git`
 1. The default name of remote is always `origin`. `git remote add origin git@github.com:CodeupClassroom/ulysses-web-exercises.git`
