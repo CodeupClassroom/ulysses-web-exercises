@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Maps</title>
+    <style>
+        #map-canvas {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<div id="map-canvas"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2l-5CY-2Ds6dIyc8doaPHImwacbive3A"></script>
+<script>
+    var mapOptions = {
+        zoom: 19,
+        center : {
+            lat:  29.426791,
+            lng: -98.489602
+        },
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    };
+    var mapCanvas = document.getElementById('map-canvas');
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+
+    var geocoder = new google.maps.Geocoder();
+
+    var address = {
+        address: "300 Alamo Plaza, San Antonio, TX, 78205"
+    };
+    function callback(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+            // Recenter the map over the address
+            // results[0].geometry.location will contain an object with lat and lng
+            // setter method
+            map.setCenter(results[0].geometry.location);
+            map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+            map.setZoom(14);
+
+            var marker = new google.maps.Marker({
+                position: results[0].geometry.location,
+                map: map
+            });
+
+            var info = new google.maps.InfoWindow({
+                content: 'This is the <strong>info</strong> <br> window content!!'
+            });
+            info.open(map, marker);
+
+        } else {
+            // Show an error message with the status if our request fails
+            alert("Geocoding was not successful - STATUS: " + status);
+        }
+    }
+
+    geocoder.geocode(address, callback);
+    // element.addEventListener('click', callback);
+
+</script>
+</body>
+</html>
