@@ -12,12 +12,13 @@
 </head>
 <body>
 <div id="map-canvas"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2l-5CY-2Ds6dIyc8doaPHImwacbive3A"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2l-5CY-2Ds6dIyc8doaPHImwacbive3A"></script>
 <script>
     var mapOptions = {
         zoom: 19,
-        center : {
-            lat:  29.426791,
+        center: {
+            lat: 29.426791,
             lng: -98.489602
         },
         mapTypeId: google.maps.MapTypeId.HYBRID
@@ -27,10 +28,10 @@
 
     var geocoder = new google.maps.Geocoder();
 
-    var address = {
+    /*var address = {
         address: "300 Alamo Plaza, San Antonio, TX, 78205"
-    };
-    function callback(results, status) {
+    };*/
+    function callback(results, status, restaurant) {
         if (status === google.maps.GeocoderStatus.OK) {
             // Recenter the map over the address
             // results[0].geometry.location will contain an object with lat and lng
@@ -45,7 +46,7 @@
             });
 
             var info = new google.maps.InfoWindow({
-                content: 'This is the <strong>info</strong> <br> window content!!'
+                content: restaurant.info
             });
             info.open(map, marker);
 
@@ -55,7 +56,29 @@
         }
     }
 
-    geocoder.geocode(address, callback);
+    var restaurants = [
+        {
+            address: "9921 Frontage Rd, San Antonio, TX 78230",
+            info: "Info 1"
+        },
+        {
+            address: "22410 US Hwy 281 N, San Antonio, TX 78259",
+            info: "Info 2"
+        },
+        {
+            address: "849 E Commerce St, San Antonio TX, 78205",
+            info: "Info 3"
+        }
+    ];
+
+    // setInterval, instead of foreach
+    restaurants.forEach(function (restaurant) {
+        geocoder.geocode({address: restaurant.address}, function (results, status) {
+            console.log(restaurant);
+            callback(results, status, restaurant);
+        });
+    });
+
     // element.addEventListener('click', callback);
 
 </script>
