@@ -5,13 +5,20 @@
     <title>Google Maps</title>
     <style>
         #map-canvas {
-            width: 600px;
-            height: 400px;
+            width: 444px;
+            height: 50vh;
+            float: left;
         }
     </style>
 </head>
 <body>
 <div id="map-canvas"></div>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2l-5CY-2Ds6dIyc8doaPHImwacbive3A"></script>
 <script>
@@ -38,11 +45,13 @@
             // setter method
             map.setCenter(results[0].geometry.location);
             map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
-            map.setZoom(14);
+            map.setZoom(10);
 
             var marker = new google.maps.Marker({
                 position: results[0].geometry.location,
-                map: map
+                map: map,
+                icon: "imgs/codeup-arrow.png",
+                animation: google.maps.Animation.DROP,
             });
 
             var info = new google.maps.InfoWindow({
@@ -72,7 +81,7 @@
     ];
 
     // setInterval, instead of foreach
-    restaurants.forEach(function (restaurant) {
+    restaurants.forEach(function (restaurant, index, array) {
         geocoder.geocode({address: restaurant.address}, function (results, status) {
             console.log(restaurant);
             callback(results, status, restaurant);

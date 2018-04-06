@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>$(jQuery) Exercises</title>
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: .6em;
+            padding: .6em;
+        }
+        nav > ul {
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+        }
+        nav > ul > li {
+            display: inline;
+            list-style: none; 
+            border: 1px solid grey;
+            height: 3em;
+            text-align: center;
+            letter-spacing: 1.6em;
+            font-weight: bold;
+            padding: 1em;
+            background-color: rgba(166, 94, 94, 0.2);
+        }
+        nav li:hover {
+            background-color: cyan;
+            font-weight: none;
+        }
+        a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 50% 50%;   
+        }
+        #how {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="http://ryanorsinger.com">Personal Site</a></li>
+        <li><a href="https://orsinger.glitch.me">Blog</a></li>
+        <li><a href="https://1001-drills.glitch.me">Project</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div id="how">
+        <h1>How to use jQuery</h1>
+        <h1>What about two h1 elements?</h1>
+
+        <p>jQuery is a popular JS library for working w/ the html document, events, and AJAX requests.</p>
+    
+    </div>
+    <div id="what">
+        <h3>What is jQuery for?</h3>
+        <ul>
+            <li>accessing and manipulating the DOM</li>
+            <li>handling events</li>
+            <li>sending AJAX requests</li>
+        </ul>
+        <hr>
+        <h3>Codeup Languages</h3>
+        <ul>
+            <li class="codeup">HTML5</li>
+            <li class="codeup">CSS3</li>
+            <li class="codeup">JavaScript</li>
+            <li class="codeup">Java</li>
+            <li class="codeup">MySQL</li>
+            <li>PHP</li>
+        </ul>
+        <hr>
+        <h3>Codeup Takeaways</h3>
+        <ul>
+            <li>How to ask effective questions</li>
+            <li>How to learn a programming language</li>
+            <li>How to approach problems programatically, systematically</li>
+            <li>Algorithmic Problem solving</li>
+            <li>How to Debug like a scientist</li>
+        </ul>
+    </div>
+</main>
+<script src="js/jquery.js"></script>
+<script>
+    "use strict";
+
+// Use jQuery to select an element by the id. Alert the contents of the element.
+var whatText = $("#what").text();
+alert(whatText);
+
+// Update the jQuery code to select and alert a different id.
+var headingText = $("#how").text();
+console.log(headingText);
+
+// Use the same id on 2 elements. How does this change the jQuery selection?
+// Remove the duplicate id. Each id should be unique on that page.
+
+// Update your code so that at least 3 different elements have the same class named codeup.
+// Using jQuery, create a border around all elements with the class codeup that is 1 pixel wide and red.
+$(".codeup").css("border", "1px solid red");
+
+// Remove the class from one of the elements. Refresh and test that the border has been removed.
+
+// Give another element an id of codeup. Does this element get a border now?
+
+// Using jQuery, set the font-size of all li elements to 20px.
+$("li").css({
+    "font-size": "20px",
+    "font-family": "fantasy",
+    "font-weight": "bold"
+});
+
+// Craft selectors that highlight all the h1, p, and li elements.
+// $("h1").css("background-color", "yellow");
+// $("p").css("background-color", "yellow");
+// $("li").css("background-color", "yellow");
+
+// Create a jQuery statement to alert the contents of your h1 element(s).
+alert($("h1").text());
+
+// Combine your selectors that highlight all the h1, p, and li elements.
+$("h1, p, li").css("background-color", "yellow");
+
+</script>
+</body>
+</html>

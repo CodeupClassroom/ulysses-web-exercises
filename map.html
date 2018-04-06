@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        #map-canvas {
+            height: 75%vh;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="map-id"></div>
+<!-- external JS -->
+<script src="https://maps.googleapis.com/maps/api/js?key=API_KEY_GOES_HERE"></script>
+<script>
+    "use strict";
+
+    function makeMap(zoomLevel) {
+        var mapOptions = {
+            zoom: zoomLevel,
+        }
+        // the rest of your code that makes the map and does the geocoding
+    }
+    
+    document.getElementById("zoom10").addEventListener('click', function() {
+        makeMap(10);
+    });
+
+    document.getElementById("zoom15").addEventListener('click', function() {
+        makeMap(15);
+    });
+
+
+</script>
+
+</body>
+</html>
