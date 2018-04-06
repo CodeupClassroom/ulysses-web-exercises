@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>konami code</title>
+
+    <style type="text/css">
+        .red-border {
+            border: 1px solid red;
+        }
+
+        .papaya {
+            background-color: papayawhip;
+        }
+
+        #idSelector {
+            height: 450px;
+            width: 450px;
+            background-color: pink;
+        }
+
+        div {
+            height: 450px;
+            width: 450px;
+            background-color: blue;
+        }
+
+        .classSelector {
+            height: 450px;
+            width: 450px;
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Konami Code</h1>
+
+<div style="background-color: red"  id="idSelector" class="classSelector">STUFF</div>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+    // konami code "↑ ↑ ↓ ↓ ← → ← → b a enter" 
+        // Step 1. define the win condition
+        // Step 2. define a partial b/c you're good, but you're not done yet
+        // Step 3. define the lose condition (reset)
+
+        // Commit to some wishful thinking:
+        // let's predend that we got the entire sequence correct
+        // up to, but not including the very last sequence member
+        // assume the last correct key was clicked
+        // how do we figure that out?
+        // win condition
+
+    const konamiCode = [
+        'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+        'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 
+        'b', 'a', 'Enter'
+    ];
+
+    var i = 0;
+
+    $("body").keydown(function(event) {        
+        if((i == (konamiCode.length -1)) && event.key == konamiCode[konamiCode.length -1]) {
+            alert("yay! 30 lives");
+        } else if(event.key == konamiCode[i]) {
+            i++;
+            console.log(event.key);
+        } else {
+            i = 0;
+        }
+    });
+
+    // .html without an argument makes it a getter
+    // this will return a string containing all the HTML between the body tags
+    $("body").html()
+
+    // setting the html string to be the html between the body tags
+    // $("body").html("<h1>Hello, World!</h1>");
+
+    // // getter
+    // $("h1").css("font-family");
+
+    // // setter for just the font-family property
+    // $("h1").css("font-family", "fantasy");
+
+    // setting multiple CSS properties w/ a JS object
+    // key names are the css property names in a string, ...
+    // $("h1").css({
+    //     "background-color": "papayawhip",
+    //     "border": "1px solid red"
+    // };
+
+    if($("h1").hasClass("papaya")) {
+        console.log("your h1s already have the papaya class");
+    }
+
+    $("h1").addClass('papaya').addClass('red-border');
+
+    setTimeout(function() {
+        $("h1").removeClass('red-border');
+    }, 2000);
+
+    $("h1").click(function() {
+        $("h1").toggleClass('papaya');
+    });
+
+    // $(selector).jQueryMethod('someValue')
+</script>
+</body>
+</html>
