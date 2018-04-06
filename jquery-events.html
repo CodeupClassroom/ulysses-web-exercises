@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery events lesson</title>
+</head>
+<body>
+<h1>Title 1</h1>
+<h1>Title 2</h1>
+<h1>Title 3</h1>
+
+<button id="highlight">Highlight titles</button>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"
+>
+</script>
+<script>
+    // If your JS code is at the end of the page
+    // $(document).ready() is unnecessary
+    // It is NOT a replacement or an equivalent of an IIFE
+    // var title = document.querySelector('h1');   // returns a single element (the first one)
+    // var allTitles = document.querySelectorAll('h1'); // returns all the elements that match (NodeList)
+    // NodeList has a foreach method (it is more similar to an array)
+    // HTMLCollection does not have a foreach method
+    // console.log(allTitles);
+
+    // title.style.backgroundColor = 'yellow';
+    /*for (var i = 0; i < allTitles.length; i++) {
+        allTitles[i].style.backgroundColor = 'yellow';
+    }*/
+
+    // document.getElementById('highlights').addEventListener('click', callback);
+    // callbacks can be named functions OR anonymous functions
+    function highlight() {
+        // console.log($('h1'));
+        // The jQuery object can be used as ana array
+        $('h1').css('background-color', 'yellow');
+    }
+    $('#highlight').on('click', highlight);
+
+    var colors = ['pink', 'green', 'goldenrod', 'papayawhip'];
+    var i = 0;
+
+    $('h1').hover(function () { // mousenter
+        $(this).css({
+            'background-color': colors[i % colors.length],
+            'cursor': 'help'
+        });
+        i++;
+    },
+    function () { // mouseleave
+        $(this).css({
+            'background-color': 'transparent',
+            'cursor': 'pointer'
+        });
+    });
+    // $('#highlight').click(callback);
+
+    // console.log(title, allTitles);
+</script>
+
+</body>
+</html>
