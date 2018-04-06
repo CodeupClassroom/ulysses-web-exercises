@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery events</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="http://ryanorsinger.com">Personal Site</a></li>
+        <li><a href="https://orsinger.glitch.me">Blog</a></li>
+        <li><a href="https://1001-drills.glitch.me">Project</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div id="how">
+        <h1>How to use jQuery</h1>
+        <h1>What about two h1 elements?</h1>
+
+        <p>jQuery is a popular JS library for working w/ the html document, events, and AJAX requests.</p>
+
+    </div>
+    <div id="what">
+        <h3>What is jQuery for?</h3>
+        <ul>
+            <li>accessing and manipulating the DOM</li>
+            <li>handling events</li>
+            <li>sending AJAX requests</li>
+        </ul>
+        <hr>
+        <h3>Codeup Languages</h3>
+        <ul>
+            <li class="codeup">HTML5</li>
+            <li class="codeup">CSS3</li>
+            <li class="codeup">JavaScript</li>
+            <li class="codeup">Java</li>
+            <li class="codeup">MySQL</li>
+            <li>PHP</li>
+        </ul>
+        <hr>
+        <h3>Codeup Takeaways</h3>
+        <ul>
+            <li>How to ask effective questions</li>
+            <li>How to learn a programming language</li>
+            <li>How to approach problems programatically, systematically</li>
+            <li>Algorithmic Problem solving</li>
+            <li>How to Debug like a scientist</li>
+        </ul>
+    </div>
+</main>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"
+>
+</script>
+<script>
+    $('h1').on('click', function () {
+        // $('h1'); // this would change all
+        $(this).css('background-color', 'papayawhip'); //this changes only the clicked one
+    });
+
+    function changeFontSize() {
+        $('p').css('font-size', '18px');
+    }
+    $('p').dblclick(changeFontSize);
+
+    function changeColor () {
+        $(this).css('color', 'red');
+    }
+    function resetColor() {
+        $(this).css('color', 'black');
+    }
+    $('li').hover(changeColor, resetColor);
+
+</script>
+</body>
+</html>
