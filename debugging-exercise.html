@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <title>Walmart</title>
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous"
+    >
+    <style>
+        #lucky-circle {
+            background-color: gray;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Lucky Number</h1>
+    <div class="col-md-6">
+        <form>
+            <div class="form-group">
+                <label for="payment">Payment $</label>
+                <input type="text" class="form-control" id="payment"
+                       placeholder="0.00">
+            </div>
+            <button id="get-lucky-number" type="button" class="btn btn-primary">
+                I'm feeling lucky
+            </button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div id="lucky-circle"></div>
+        <p class="lead text-center">
+            Final price <span class="lead" id="final-price"></span>
+        </p>
+    </div>
+</div>
+<script
+    src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"
+>
+</script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+    crossorigin="anonymous"
+>
+</script>
+<script>
+    (function () {
+        'use strict';
+        function animate(finalColor, finalPrice) {
+            var colors = ['green', 'yellow', 'blue', 'red', 'orange'];
+            var limit = Math.floor(Math.random() * 25); // 12
+            var i = 0;
+
+            var id = setInterval(function () { // loop ? 0 - 24
+                $('#lucky-circle').css('background-color', colors[i % colors.length]);
+                i++; // 1
+                if (i === limit) { // stop condition
+                    clearInterval(id);
+                    $('#lucky-circle').css('background-color', colors[finalColor]);
+                    $('#final-price').html('$' + finalPrice.toFixed(2));
+                }
+            }, 300);
+        }
+
+        $('#get-lucky-number').on('click', function () {
+            var luckyNumber = Math.floor(Math.random() * 5); // 0
+            var discounts = [.9, .75, .65, .5, 0]; // 100
+            var finalPrice = $('#payment').val() * discounts[luckyNumber];
+
+            animate(luckyNumber, finalPrice);
+        });
+    })();
+</script>
+</body>
