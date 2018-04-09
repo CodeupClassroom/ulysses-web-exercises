@@ -4,7 +4,18 @@
     <title>jQuery Attributes and CSS Exercise</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style type="text/css">
-        
+        div {
+            margin: 10px;
+            width: 50%;
+        }
+        span {
+            float: right;
+        }
+
+        #register {
+            display: none;
+        }
+
         .invisible {
             display: none;
         }
@@ -16,11 +27,17 @@
     </style>
 </head>
 <body>
+    <div>
+        <h1>Would you like to sign up for our newsletter?</h1>
+        <span>X</span>
+    </div>
 
 <main class="container">
     <button>Highlight the last list item of each UL tag...</button>
 
     <h1>A Bunch-0-Parks</h1>
+    
+    <h2 id="register">You should really register!</h2>
 
     <h3 id="national-parks-heading">National Parks</h3>
     <ul id="national-parks">
@@ -52,24 +69,45 @@
 <script type="text/javascript">
     "use strict";
 
+    // Solutions for the jQuery Traversal exercise
     // Create a button that, when clicked, makes the last li in each ul have a yellow background.
-    $("button").click(function() {
-        // makes the last li in each ul have a yellow background.
-        // if we need to do something to each ul's contained elements, then... we'll do a .each on the $("ul")
-        $("ul").each(function(index, element) {
-            $(element).children().last().toggleClass('highlight');
-        });
-    });
+    // $("button").click(function() {
+    //     // makes the last li in each ul have a yellow background.
+    //     // if we need to do something to each ul's contained elements, then... we'll do a .each on the $("ul")
+    //     $("ul").each(function(index, element) {
+    //         $(element).children().last().toggleClass('highlight');
+    //     });
+    // });
 
     // When any h3 is clicked, the lis underneath it should be bolded. Use font-weight: bold to achieve this.
-    $('h3').click(function(event) {
-        $(this).next().children().css('font-weight', 'bold');
-    });    
+    // $('h3').click(function(event) {
+    //     $(this).next().children().css('font-weight', 'bold');
+    // });    
 
     // When any list item is clicked, first li of the parent ul should have a font color of blue.
-    $("li").click(function() {
-        $(this).parent().children().first().css('color', 'blue');
+    // $("li").click(function() {
+    //     $(this).parent().children().first().css('color', 'blue');
+    // });
+
+    // At the top of the page, add a div with two elements, an h1 that reads "Would you like to sign up for our newsletter?" and a span that has an 'x' in it. When the 'x' is clicked, hide the entire div element.
+    $("span").click(function(event) {
+        $(event.target).parent().hide();
     });
 
+    // The uls next to each h3 that contain facts about each park should start out hidden, and when the corresponding h3 is clicked, the display of the ul should be toggled with a sliding effect.
+    
+    // $("ul").hide();
+
+    $("h3").click(function() {$(this).next().slideToggle();
+    });
+
+    // After the user has been on the page for 8 seconds, an h2 should fade in that asks the user to register for the site.
+
+    // works like an egg timer
+    setTimeout(function() {
+        $("#register").fadeIn();
+    }, 8000);
+
+    
 </script>
 </body>
