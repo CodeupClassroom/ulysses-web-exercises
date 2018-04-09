@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery methods</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<h1>Example Page</h1>
+<div class="centered important">
+    <h3>NOTICE</h3>
+    <p>This is an important message!</p>
+</div>
+<div class="not-important">
+    <h2>Lorem Ipsum</h2>
+    <p>Lorem ipsum dolor sit amet, incididunt ut <span class="important">labore et dolore magna aliqua.</span>, quis ut aliquip ex ea commodo.</p>
+</div>
+<p class="centered important">This is also very important.</p>
+<a href="#" id="highlight-important">Click to highlight important text.</a>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"
+>
+</script>
+<script>
+    // hasClass
+    // removeClass
+    // addClass
+    // toggleClass
+
+    function toggleClass (selector, className) {
+        if ($(selector).hasClass(className)) {
+            $(selector).removeClass(className);
+        } else {
+            $(selector).addClass(className);
+        }
+    }
+
+
+</script>
+</body>
+</html>
