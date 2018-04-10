@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX examples</title>
+</head>
+<body>
+<ul id="names">
+</ul>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody id="pets">
+        <!--rows with the pet name and its age-->
+    </tbody>
+</table>
+
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"
+>
+</script>
+<script>
+    function onError(jqXHR, status, message) {
+        console.log(jqXHR, status, message);
+    }
+    // request -response cycle
+    var request = $.ajax('names.json');
+
+    // succeeded
+    request.done(function (response) {
+        console.log(response); // it's an array
+        response.forEach(function (name) {
+            $('#names').append("<li>" + name + "</li>"); // +=
+        });
+    });
+    // failed
+    request.fail(onError);
+
+    // console.log(names);
+    request = $.get('pets.json', {  // similar to passing arguments to a function
+        limit:  10, // this values are converted into a query string
+        offset: 20  // ?limit=10&offset=20
+    });
+    request.done(function (response) {  // array
+        response.forEach(function (pet) {
+            $('#pets').append("<tr><td>" + pet.name + "</td><td>" + pet.age + "</td></tr>");
+        });
+    });
+    request.fail(onError);
+
+</script>
+</body>
+</html>
