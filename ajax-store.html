@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+<button id="refresh">(dynamically) Refresh this inventory</button>
+
+<table id="products">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Categories</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<script src="js/jquery.js"></script>
+
+<script>
+(function() {
+    "use strict";
+    function makeRequestAndRenderResults() {
+        // TODO: Create an ajax GET request for /data/inventory.json
+        var request = $.get("data/inventory.json");
+
+        // ALWAYS handle the fail case or you risk silent bugs/errors
+        request.fail(function(jqXHR, status, error) {
+            console.log(status);
+            console.log(error);
+        });
+
+        request.done(function(data) {
+
+            var htmlString = "";
+
+            data.forEach(function(tool) {
+                htmlString += "<tr>";
+                htmlString += "<td class='alert'>" + tool.title + "</td>";
+                htmlString += "<td>" + tool.quantity + "</td>";
+                htmlString += "<td>" + tool.price + "</td>";
+                htmlString += "<td>" + tool.categories.join(", ") + "</td>";
+                htmlString += "</tr>";
+            });
+            
+            $("#insertProducts").html(htmlString);   
+
+        });
+    }
+    
+
+    $("#refresh").click(function(event) {
+        makeRequestAndRenderResults();
+    });
+
+    makeRequestAndRenderResults();
+
+})();
+</script>
+
+</body>
+</html>
