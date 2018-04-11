@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maps API Lesson</title>
+</head>
+<body>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"
+>
+</script>
+<script>
+    // weather(APIKey, address)
+    // http://api.openweathermap.org/data/2.5/weather?APPID=467fce2fbe4d967cacd8c8886374905a&q=San Antonio, TX
+    // URLs = end-points
+    var request = $.get("http://api.openweathermap.org/data/2.5/weather", {  //   query string
+        APPID: "8f32c0149a278cdb5f995fbb3d98eba5",
+        q:     "San Antonio",
+        units: "imperial"
+    });
+    request.done(function (response) {
+        console.log(response);
+        console.log(response.main.humidity);
+        console.log(response.main.temp_max);
+        console.log(response.main.temp_min);
+    });
+
+    $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
+        APPID: "8f32c0149a278cdb5f995fbb3d98eba5",
+        lat:    29.423017,  // hard-coded, google maps api
+        lon:   -98.48527,  // lng
+        units: "imperial",
+        cnt: 3
+    }).done(function(response) {
+        console.log(response);
+
+        // loop
+        console.log(response.list[0].temp.max);
+        console.log(response.list[0].temp.min);
+    });
+</script>
+</body>
+</html>
