@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        html {
+            box-sizing: border-box;
+        }
+
+        .board {
+            width: 620px;
+        }
+
+        .box {
+            height: 300px;
+            width: 300px;
+            float: left;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        button {
+            height: 3em;
+        }
+    </style>
+</head>
+<body>
+    <button>Start Game</button>
+    <main class="board">
+        <div data-color="red" class="box red"></div>
+        <div data-color="green" class="box green"></div>
+        <div data-color="yellow" class="box yellow"></div>
+        <div data-color="blue" class="box blue"></div>
+    </main>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        "use strict";
+
+        // model the problem/domain/process in natural language
+
+        // click start, simon moves
+
+        // simon Move means the computer selects a box at random
+        // simon adds that move to its sequence of moves
+        // then simon lights up that sequence.
+
+        // simon waits for player to make a choice
+        // if player chooses correctly for each sequence
+        // then, simon moves again
+
+        // if a player clicks a box, light up that box.
+
+        var simonSequence = [];
+        var playerSequence = [];
+
+        function simonMove() {
+            var boxes = $(".box");
+            var randomIndex = Math.floor(Math.random() * 3);
+            var move = $(boxes[randomIndex]).data('color');
+            simonSequence.push(move);
+            playBack();
+        }
+
+        function playBack() {
+            // calls a function every given amount of time...
+            var i = 0;
+
+            var intervalId = setInterval(function() {
+                if(i >= simonSequence.length) {
+                    clearInterval(intervalId);
+                }
+                lightUp(simonSequence[i]);
+                i++;
+            }, 400);
+        }
+
+        function lightUp(box) {
+            // since box is a string containing a color
+            // we'll need to select the element based on that data attribute's value
+            box = $("div[data-color='" + box + "']");
+
+            $(box).css('opacity', 0.2);
+            setTimeout(function() {
+                $(box).css('opacity', 1.0);
+            }, 200);
+        }
+
+        var counter = 0;
+
+        $(".box").click(function(event) {
+           lightUp($(event.target).data('color'));
+
+           var color = $(event.target).data('color');
+           // compare what we clicked to what we should click
+
+            if(simonSequence[counter] == color && counter === simonSequence.length -1) {
+                counter = 0;
+                simonMove();
+
+            } else if (simonSequence[counter] == color) {
+                // correct, but not done w/ the entire sequence
+                counter++;
+
+            } else {
+                counter = 0;
+                simonSequence = [];
+                playerSequence = [];
+            }
+
+            // you clicked the right box and you're done
+            // you chose right, but there's more to go...
+            // incorrect
+        });
+
+        // starts the game
+        $("button").click(function() {
+            simonSequence = [];
+            playerSequence = [];
+
+            simonMove();
+        });
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
