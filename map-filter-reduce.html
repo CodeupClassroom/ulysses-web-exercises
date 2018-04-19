@@ -5,6 +5,9 @@
     <title>map-filter-reduce</title>
 </head>
 <body>
+
+<button id="filter-by-language" type="button">Show users with more than 2 languages</button>
+
 <script>
     // pure functions -> to never change data
     // imperative style
@@ -48,6 +51,38 @@
         })
     ;
     document.write(`<ul>${listItems.join('')}</ul>`);
+
+    document.getElementById('filter-by-language').addEventListener('click', () => {
+        console.log('filter');
+
+        const listItems = users
+            .filter(user => user.languages.length > 2) // knows more than 2 languages
+            .map(user => user.name)  // push
+            .map(name => name[0].toUpperCase() + name.substring(1)) // push
+            .map(capitalizedName => `<li>${capitalizedName}</li>`)
+        ;
+        document.write(`<ul>${listItems.join('')}</ul>`);
+        // console.log(moreThan2Languages); // map
+
+        /*const moreThan2Languages = [];
+        for (const language of languages) {
+            if (language.length > 2) { // filter
+                moreThan2Languages.push(language);
+            }
+        }
+        console.log(moreThan2Languages); // filter*/
+
+        // only the ones that know javascript
+        // const knowsJS = [];
+        // for (const language of languages) {
+        //     if (language.includes('javascript')) {
+        //         knowsJS.push(language);
+        //     }
+        // }
+        // console.log(knowsJS);
+
+
+    });
 
     // extract all the names from the array of users (first mapping operation)
     // const names = users.map(user => user.name);
