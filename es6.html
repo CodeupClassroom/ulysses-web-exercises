@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>
+            <a class="sort" class="header" href="#">Friend</a>
+        </th>
+        <td class="header">Books</td>
+    </tr>
+    </thead>
+    <tbody id="friends">
+    </tbody>
+</table>
+<script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"
+>
+</script>
+<script>
+    var tbody =  $('#friends');
+    var sortName = $('.sort');
+    var friends = [
+        {name: 'Oliver', books: ['Ansible for DevOps', 'Servers for hackers']},
+        {
+            name: 'Barry',
+            books: ['Working effectively with unit tests', '50 quick ideas for your tests']
+        },
+        {
+            name: 'Jessica',
+            books: ['Understanding the 4 rules of simple design', 'Principles of package design']
+        },
+        {name: 'Clark', books: ['Selling test driven projects']}
+    ];
+    var buildTableRows = function (friends) {
+        var table = '';
+        friends.forEach(function (friend) {
+            table += '<tr><td>' + friend.name + '</td><td>' + friend.books.join(', ') + '</td></tr>';
+        });
+
+        return table;
+    }
+    var sortFriendsByName = function (friends) {
+        friends.sort(function (friendA, friendB) {
+            if (friendA.name < friendB.name) {
+                return -1;
+            }
+            if (friendA.name > friendB.name) {
+                return 1;
+            }
+            return 0;
+        });
+    };
+    var sortTable = function (event) {
+        event.preventDefault();
+        sortFriendsByName(friends);
+        tbody.html(buildTableRows(friends));
+    }
+
+    tbody.html(buildTableRows(friends));
+    sortName.on('click', sortTable)
+</script>
+</body>
+</html>
