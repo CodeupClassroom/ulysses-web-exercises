@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>map-filter-reduce</title>
+</head>
+<body>
+<script>
+    // pure functions -> to never change data
+    // imperative style
+
+    const users = [
+        {
+            name: 'zach',
+            email: 'zach@codeup.com',
+            languages: ['javascript', 'bash']
+        },
+        {
+            name: 'ryan',
+            email: 'ryan@codeup.com',
+            languages: ['clojure', 'javascript']
+        },
+        {
+            name: 'luis',
+            email: 'luis@codeup.com',
+            languages: ['java', 'scala', 'php']
+        },
+        {
+            name: 'fernando',
+            email: 'fernando@codeup.com',
+            languages: ['java', 'php', 'sql']
+        },
+        {
+            name: 'justin',
+            email: 'justin@codeup.com',
+            languages: ['html', 'css', 'javascript', 'php']
+        }
+    ];
+
+    console.log(users); //input
+
+    // const names = users.map(user => user.name);
+    const listItems = users
+        .map(user => user.name)  // push
+        .map(name => name[0].toUpperCase() + name.substring(1)) // push
+        .map(function (capitalizedName) { // an array.push() is implied
+            return `<li>${capitalizedName}</li>`;
+        })
+    ;
+    document.write(`<ul>${listItems.join('')}</ul>`);
+
+    // extract all the names from the array of users (first mapping operation)
+    // const names = users.map(user => user.name);
+    /*const names = [];
+    for (let user of users) {
+        names.push(user.name);  // map operation -> extract all the names from users
+    }*/
+    // console.log(names);    // output an array with names
+
+    // Capitalize all the names (second mapping operation)
+    // const capitalizedNames = names.map(name => name[0].toUpperCase() + name.substring(1));
+    /*for (let name of names) {
+        capitalizedNames.push(name[0].toUpperCase() + name.substring(1));
+    }*/
+    console.log(listItems);
+
+    // array
+    // input -> map (transformation) -> output (array)
+
+</script>
+</body>
+</html>
