@@ -86,19 +86,10 @@
 
     document.getElementById('count-different-languages').addEventListener('click', () => {
         console.log('different languages');
-        const counter = [];
         const allLanguages = users
             .map(user => user.languages) // userLanguages
-            .reduce((allLanguages, userLanguages) => {
-                return allLanguages.concat(userLanguages)
-            }, [])
-            .filter(language => {
-                const isDuplicated = counter.includes(language);
-                if (!isDuplicated) {
-                    counter.push(language);
-                }
-                return !isDuplicated;
-            })
+            .reduce((allLanguages, userLanguages) => allLanguages.concat(userLanguages), [])
+            .filter((language, index, allLanguages) => allLanguages.indexOf(language) === index)
         ;
         const differentLanguages = allLanguages.length;
         document.write(`we all know <strong>${differentLanguages}</strong> languages.`);
