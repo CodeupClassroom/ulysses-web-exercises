@@ -43,6 +43,23 @@
         return number;
     }
 
+
+    const firstName = 'Zach';
+    const books = [];
+    // short-hand object assignment
+    const friend = {
+        firstName,
+        books
+    };
+    console.log(friend);
+
+
+    // default parameter values -> optional arguments
+    const pow = (number, exponent = 2) => /*Math.pow(number, exponent)*/ number ** exponent; // super short version
+    console.log(pow(2, 10)); // 1024
+    console.log(pow(6)); // 36
+
+
     if (true) { // start of the block
         const cohortName = 'Ulysses'; // block level scope
         let number = 7; // block level scope
@@ -67,25 +84,42 @@
     friends.push({name: 'Fer', books: []}); // valid to modify by adding/removing elements
     //friends = []; // invalid!! re=assigning
 
+    function name1 (params) {}         // es5
+    const name2 = function(params) {}; // modules
+    const name3 = params => {};        // es6 modules/functions
+    const myArray = [1, 2, 3, 4, 5];
+    const [x, y, z, a, b] = myArray;
+    console.log(x, y, z, a, b);
+    myArray[4] = 'bananas'; // this won't affect b, b will always be 5
+
 
     // assigning a function literal -> const
-    const buildTableRows = function (friends) {
+    const buildTableRows =  friends => /* fat arrow */ { // short function literal
         let table = '';
-        friends.forEach(function (friend) {
+        // friends.forEach(friend => {
+        for (let friend of friends) {
             // template strings
+            let {name, books} = friend;  // object destructuring -> splitting an object into variables
+
             table += `<tr>
-                        <td>${friend.name}</td><td>
+                        <td>${name}</td><td>
                             <ul>
-                                <li>${friend.books.join('</li><li>')}</li>
+                                <li>${books.join('</li><li>')}</li>
                             </ul>
                         </td>
                       </tr>`;
-        });
+        }
 
+        // let sentence = 'I love JS';
+        // for (let character of sentence) {
+        //     console.log(character);
+        // }
+
+        // });
         return table;
     };
-    const sortFriendsByName = function (friends) {
-        friends.sort(function (friendA, friendB) {
+    const sortFriendsByName = friends => {
+        friends.sort((friendA, friendB) => {
             if (friendA.name < friendB.name) {
                 return -1;
             }
@@ -95,14 +129,19 @@
             return 0;
         });
     };
-    const sortTable = function (event) {
+    const sortTable = event => {
         event.preventDefault();
+        console.log(this); // this when using the short syntax will be the window object, not the current jQuery object
+        console.log(event.target); //if you REALLY want to use the short syntax replace `this` with `event.target`
+        //$(this).css('color', 'red'); // incorrect this is the windows
+        $(event.target).css('color', 'red'); // correct event.target is still the anchor element
         sortFriendsByName(friends);
         tbody.html(buildTableRows(friends));
     };
 
     tbody.html(buildTableRows(friends));
-    sortName.on('click', sortTable)
+    sortName.on('click', sortTable);
+    console.log(b);
 </script>
 </body>
 </html>
