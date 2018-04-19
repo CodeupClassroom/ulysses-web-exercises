@@ -24,9 +24,35 @@
 >
 </script>
 <script>
-    var tbody =  $('#friends');
-    var sortName = $('.sort');
-    var friends = [
+    // global variables
+    // local variables -> defined inside of a function
+    // parameters -> inside of a function
+    // block level -> anywhere, either inside of a function or in the global scope
+
+    function uppercaseName(name) { // parameter -> function level scope
+        var modifiedName = name.toUpperCase(); // local variable (local to the function) -> function level
+        return modifiedName;
+    }
+
+    function multiplyIfPositive(number) { // parameter -> function level scope
+        if (number > 0) {
+            let multiplied = number * 10; // local variable (inside of a function) -> block level scope
+            return multiplied;
+        }
+        // console.log(multiplied); // error, multiplied should not be used outside of the if block
+        return number;
+    }
+
+    if (true) { // start of the block
+        const cohortName = 'Ulysses'; // block level scope
+        let number = 7; // block level scope
+        console.log(number);
+        console.log(cohortName);
+    } // end of the block
+
+    const tbody =  $('#friends');
+    const sortName = $('.sort');
+    const friends = [
         {name: 'Oliver', books: ['Ansible for DevOps', 'Servers for hackers']},
         {
             name: 'Barry',
@@ -38,15 +64,20 @@
         },
         {name: 'Clark', books: ['Selling test driven projects']}
     ];
-    var buildTableRows = function (friends) {
-        var table = '';
+    friends.push({name: 'Fer', books: []}); // valid to modify by adding/removing elements
+    //friends = []; // invalid!! re=assigning
+
+
+    // assigning a function literal -> const
+    const buildTableRows = function (friends) {
+        let table = '';
         friends.forEach(function (friend) {
             table += '<tr><td>' + friend.name + '</td><td>' + friend.books.join(', ') + '</td></tr>';
         });
 
         return table;
-    }
-    var sortFriendsByName = function (friends) {
+    };
+    const sortFriendsByName = function (friends) {
         friends.sort(function (friendA, friendB) {
             if (friendA.name < friendB.name) {
                 return -1;
@@ -57,11 +88,11 @@
             return 0;
         });
     };
-    var sortTable = function (event) {
+    const sortTable = function (event) {
         event.preventDefault();
         sortFriendsByName(friends);
         tbody.html(buildTableRows(friends));
-    }
+    };
 
     tbody.html(buildTableRows(friends));
     sortName.on('click', sortTable)
