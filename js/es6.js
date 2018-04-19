@@ -29,17 +29,16 @@ const users = [
   }
 ];
 
-// TODO: replace the `var` keyword with `const`, then try to reassign a variable
-// declared as `const`
-var name = 'Isaac';
-var email = 'isaac@codeup.com';
-var languages = ['php', 'javascript'];
+const name = 'Isaac';
+const email = 'isaac@codeup.com';
+const languages = ['php', 'javascript'];
 
-// TODO: rewrite the object literal using object property shorthand
+// email = 'test@codeup.com';
+
 users.push({
-  name: name,
-  email: email,
-  languages: languages
+    name,
+    email,
+    languages
 });
 
 // TODO: replace `var` with `let` in the following variable declarations
