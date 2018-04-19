@@ -98,4 +98,16 @@
     git branch -m oldname newname
     ```
 
-   
+## Steps to create a pull request
+
+1. Create a local branch  `git checkout -b my-solution`.
+1. Make your changes and commit in that branch.
+1. Once your solution is complete. Push your changes
+   `git push origin my-solution`.
+1. Go to github.com and create a new pull request from your new branch
+    - Add a comment in the PR explaining your changes (summary)
+1. Click on `Create PR`
+1. Click on `Merge PR`
+1. Go back to IntelliJ
+1. Switch to `master`. `git checkout master`
+1. Pull the new changes. `git pull origin master`
