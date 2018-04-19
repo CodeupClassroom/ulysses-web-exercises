@@ -64,7 +64,7 @@ console.log(developers);
 
 let list = '<ul>';
 for (const developer of developers) {
-  // TODO: rewrite the assignment below to use template strings
-  list += '<li>' + developer + '</li>';
+  list += `<li>${developer}</li>`;
 }
 list += '</ul>';
+// console.log(list);
