@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>map-filter-reduce</title>
+</head>
+<body>
+
+<button id="filter-by-language" type="button">Show users with more than 2 languages</button>
+<button type="button" id="count-different-languages">How many languages do we know?</button>
+<script>
+    // pure functions -> to never change data
+    // imperative style
+
+    const users = [
+        {
+            name: 'zach',
+            email: 'zach@codeup.com',
+            languages: ['javascript', 'bash']
+        },
+        {
+            name: 'ryan',
+            email: 'ryan@codeup.com',
+            languages: ['clojure', 'javascript']
+        },
+        {
+            name: 'luis',
+            email: 'luis@codeup.com',
+            languages: ['java', 'scala', 'php']
+        },
+        {
+            name: 'fernando',
+            email: 'fernando@codeup.com',
+            languages: ['java', 'php', 'sql']
+        },
+        {
+            name: 'justin',
+            email: 'justin@codeup.com',
+            languages: ['html', 'css', 'javascript', 'php']
+        }
+    ];
+
+    console.log(users); //input
+
+    // const names = users.map(user => user.name);
+    const listItems = users
+        .map(user => user.name)  // push
+        .map(name => name[0].toUpperCase() + name.substring(1)) // push
+        .map(function (capitalizedName) { // an array.push() is implied
+            return `<li>${capitalizedName}</li>`;
+        })
+    ;
+    document.write(`<ul>${listItems.join('')}</ul>`);
+
+    document.getElementById('filter-by-language').addEventListener('click', () => {
+        console.log('filter');
+
+        const listItems = users
+            .filter(user => user.languages.length > 2) // knows more than 2 languages
+            .map(user => user.name)  // push
+            .map(name => name[0].toUpperCase() + name.substring(1)) // push
+            .map(capitalizedName => `<li>${capitalizedName}</li>`)
+        ;
+        document.write(`<ul>${listItems.join('')}</ul>`);
+        // console.log(moreThan2Languages); // map
+
+        /*const moreThan2Languages = [];
+        for (const language of languages) {
+            if (language.length > 2) { // filter
+                moreThan2Languages.push(language);
+            }
+        }
+        console.log(moreThan2Languages); // filter*/
+
+        // only the ones that know javascript
+        // const knowsJS = [];
+        // for (const language of languages) {
+        //     if (language.includes('javascript')) {
+        //         knowsJS.push(language);
+        //     }
+        // }
+        // console.log(knowsJS);
+
+
+    });
+
+    document.getElementById('count-different-languages').addEventListener('click', () => {
+        console.log('different languages');
+        const counter = [];
+        const allLanguages = users
+            .map(user => user.languages) // userLanguages
+            .reduce((allLanguages, userLanguages) => {
+                return allLanguages.concat(userLanguages)
+            }, [])
+            .filter(language => {
+                const isDuplicated = counter.includes(language);
+                if (!isDuplicated) {
+                    counter.push(language);
+                }
+                return !isDuplicated;
+            })
+        ;
+        const differentLanguages = allLanguages.length;
+        document.write(`we all know <strong>${differentLanguages}</strong> languages.`);
+        /*const counter = [];  // all different languages
+        for (const languages of allLanguages) { // map
+            for (const language of languages) { // map
+                // filter
+                if ( !counter.includes(language) /!* is it already there *!/) {
+                    counter.push(language);
+                }
+            }
+        }
+        console.log(counter.length);*/
+    });
+
+    // extract all the names from the array of users (first mapping operation)
+    // const names = users.map(user => user.name);
+    /*const names = [];
+    for (let user of users) {
+        names.push(user.name);  // map operation -> extract all the names from users
+    }*/
+    // console.log(names);    // output an array with names
+
+    // Capitalize all the names (second mapping operation)
+    // const capitalizedNames = names.map(name => name[0].toUpperCase() + name.substring(1));
+    /*for (let name of names) {
+        capitalizedNames.push(name[0].toUpperCase() + name.substring(1));
+    }*/
+    console.log(listItems);
+
+    // array
+    // input -> map (transformation) -> output (array)
+
+</script>
+</body>
+</html>
