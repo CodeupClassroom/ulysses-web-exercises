@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promises</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+        #red {
+            background-color: red;
+        }
+        #blue {
+            background-color: blue;
+        }
+        #orange {
+            background-color: orange;
+        }
+        #goldenrod {
+            background-color: goldenrod;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="red"></div>
+<div class="box" id="blue"></div>
+<div class="box" id="orange"></div>
+<div class="box" id="goldenrod"></div>
+<script>
+    // asynchronous operations
+    setTimeout(() => {
+        document.getElementById('red').style.display = 'none';
+        setTimeout(() => {
+            document.getElementById('blue').style.display = 'none';
+            setTimeout(() => {
+                document.getElementById('orange').style.display = 'none';
+                setTimeout(() => {
+                    document.getElementById('goldenrod').style.display = 'none'
+                }, 200);
+            }, 200);
+        }, 200);
+    }, 200);
+
+    function ajax() {
+        const promise = new Promise(function (resolve /* done */, reject /* fail */) {  // a local variable
+            setTimeout(() => {  // suppose that this is an ajax request
+                const number = Math.random();
+                console.log(number);
+                if (number > 0.5) {
+                    resolve();
+                } else {
+                    reject();
+                }
+            }, 1500);
+        });
+
+        return promise;
+    }
+
+    const promise = ajax();
+    promise.then(() => console.log('resolved'));
+    promise.catch(() => console.log('rejected'));
+
+    // You'll need this for the team project at the end of this module
+    function getGithubUsers() {
+        return fetch('https://api.github.com/users').then(response => response.json());
+    }
+
+    const promiseRequest = getGithubUsers()
+        .then(users => {
+            // console.log(users);
+            const listItems = users
+                .filter(user => user.login.includes('la'))
+                .map(user => `<li>${user.login}</li>`)
+                .join('')
+            ;
+            console.log(listItems);
+            document.write(`<ul>${listItems}</ul>`);
+        })
+    ;
+    promiseRequest.catch((error) => console.log(error));
+
+
+    let headers = new Headers({
+        'Access-Control-Allow-Origin':'*'
+    });
+
+    const githubPromise = fetch('https://api.github.com/repositories');
+
+    const bitbucketPromise = fetch('https://api.bitbucket.org/2.0/repositories', {headers});
+    //
+    Promise.all([githubPromise, bitbucketPromise])
+        .then(responses => {
+            /*responses.forEach(response => {
+                console.log(response.json().then(users => console.log(users)));
+            });*/
+            console.log(responses);
+        })
+        .catch(error => console.log(error));
+
+</script>
+</body>
+</html>
