@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Another example using fetch and promises</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body>
+<main class="container">
+    <div class="row">
+    </div>
+</main>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<script>
+    // let request = $.ajax('url');
+    // request.done(user => console.log(user));
+    // request.fail(error => console.log(error));
+
+    // Module
+    const getGithubUsers = () => {
+        let request = fetch('https://api.github.com/users'/*'data/users.json'*/);
+        return request.then(response => response.json()); // intermediate step;
+    };
+
+
+    let request = getGithubUsers() // $.ajax
+        .then(users => {
+            const usersCards = users.map(user => {
+                return `<div class="col-sm-6">
+                            <div class="card">
+                                <img class="card-img-top" src="${user.avatar_url}" alt="User's avatar">
+                                <div class="card-body">
+                                    <h5 class="card-title">${user.login}</h5>
+                                    <a href="${user.url}" class="btn btn-primary">Go to Github profile</a>
+                                </div>
+                            </div>
+                        </div>`;
+            }).join('');
+            document.querySelector('.row').innerHTML += usersCards;
+        }) // cannot do this directly
+    ;
+
+    request.catch(error => console.log(error));
+</script>
+</body>
+</html>
